@@ -1,0 +1,21 @@
+<template>
+    <template if:true={contacts.data}>
+        <lightning-layout>
+        <template for:each={contacts.data} for:item="contact">
+            <a
+                href="#"
+                key={contact.Id}
+                data-contact-id={contact.Id}
+                onclick={handleSelect}
+            >  
+                    <lightning-layout-item padding="horizontal-medium">
+                        <img src={contact.Picture__c} alt="Profile photo" />
+                    </lightning-layout-item>
+                    <lightning-layout-item padding="horizontal-medium">
+                        <p>{contact.Name}</p>
+                    </lightning-layout-item>    
+            </a>
+        </template>
+    </lightning-layout>
+    </template>
+</template>

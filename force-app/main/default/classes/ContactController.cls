@@ -1,0 +1,12 @@
+public with sharing class ContactController {
+    @AuraEnabled(cacheable=true)
+    public static List<Contact> getContactList(String recordId) {
+        return [
+            SELECT Id, Name, Title, Phone, Email, Picture__c
+            FROM Contact
+            WHERE AccountId = :recordId
+            WITH SECURITY_ENFORCED
+            LIMIT 10
+        ];
+    }
+}
